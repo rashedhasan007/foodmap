@@ -3,3 +3,4 @@ folium
 streamlit
 pandas
 pybase64
+geocoder
