@@ -2,4 +2,4 @@ streamlit_folium
 folium
 streamlit
 pandas
-base64
+pybase64
