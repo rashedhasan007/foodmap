@@ -14,6 +14,8 @@ warnings.filterwarnings('ignore')
 import os
 
 import codecs
+import geocoder
+g = geocoder.ip('me')
 f="""
 
 """
@@ -41,7 +43,7 @@ latlonMoved, namesStationsMoved = getLatLon(movedStations)
 latlonClosed, namesStationsClosed = getLatLon(closedStations)
 latlonACL, namesStationsACL = getLatLon(ACLStations)
 #24.408649220141122, 88.60869992741216
-mapStations = folium.Map( location=[24.408649220141122,88.60869992741216], zoom_start=18 )
+mapStations = folium.Map( location=g.latlng, zoom_start=18 )
 for latlon, names, color in zip((latlonActive, latlonMoved, latlonClosed, latlonACL),
                                  (namesStationsActive, namesStationsMoved,
                                   namesStationsClosed, namesStationsACL),
@@ -65,7 +67,7 @@ for latlon, names, color in zip((latlonActive, latlonMoved, latlonClosed, latlon
 
 
 
-folium.Circle([24.408649220141122,88.60869992741216],
+folium.Circle(g.latlng,
                     radius=40
                    ).add_to(mapStations)
 folium_static(mapStations)
