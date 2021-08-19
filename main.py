@@ -3,6 +3,7 @@ from streamlit_folium import folium_static
 import folium
 import json
 import folium
+import pandas as pd
 
 from folium import IFrame
 
