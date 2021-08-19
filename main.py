@@ -3,13 +3,11 @@ from streamlit_folium import folium_static
 import folium
 import json
 import folium
-import pandas as pd
-# Testing Custom Mask R-CNN Model
-import base64
+
 from folium import IFrame
 
 import streamlit as st
-import utils
+
 import warnings
 warnings.filterwarnings('ignore')
 import os
