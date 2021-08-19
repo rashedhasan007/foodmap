@@ -16,6 +16,17 @@ import os
 import codecs
 import geocoder
 g = geocoder.ip('me')
+
+import requests
+import json
+
+send_url = "http://api.ipstack.com/check?access_key=e51d5b9649f03344146d8e72e8779eb2"
+geo_req = requests.get(send_url)
+geo_json = json.loads(geo_req.text)
+latitude = geo_json['latitude']
+longitude = geo_json['longitude']
+city = geo_json['city']
+
 f="""
 
 """
@@ -43,7 +54,7 @@ latlonMoved, namesStationsMoved = getLatLon(movedStations)
 latlonClosed, namesStationsClosed = getLatLon(closedStations)
 latlonACL, namesStationsACL = getLatLon(ACLStations)
 #24.408649220141122, 88.60869992741216
-mapStations = folium.Map( location=g.latlng, zoom_start=18 )
+mapStations = folium.Map( location=[latitude,longitude], zoom_start=18 )
 for latlon, names, color in zip((latlonActive, latlonMoved, latlonClosed, latlonACL),
                                  (namesStationsActive, namesStationsMoved,
                                   namesStationsClosed, namesStationsACL),
@@ -67,7 +78,7 @@ for latlon, names, color in zip((latlonActive, latlonMoved, latlonClosed, latlon
 
 
 
-folium.Circle(g.latlng,
+folium.Circle([latitude,longitude],
                     radius=40
                    ).add_to(mapStations)
 folium_static(mapStations)
