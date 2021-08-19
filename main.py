@@ -51,12 +51,12 @@ for latlon, names, color in zip((latlonActive, latlonMoved, latlonClosed, latlon
         #folium.Marker( location=[ coord[0], coord[1]], icon=folium.Icon(color=color),
                       #popup=names[i]).add_to( mapStations )
 
-        encoded = base64.b64encode(open('result.png', 'rb').read())
+        encoded = base64.b64encode(open('icons8-burger-60', 'rb').read())
         html = '<h1>Onupom Store</h1><p>Amchottor,Rajshahi</p><p1>Total cokacol</p1><h1>8</h1><img src="data:image/png;base64,{}" style="width:300px;height:300px;">'.format
 
         iframe = IFrame(html(encoded.decode('UTF-8')), width=400, height=350)
         popup = folium.Popup(iframe, max_width=400)
-        icon = folium.features.CustomIcon('burger.png', icon_size=(30, 30))
+        icon = folium.features.CustomIcon('/icons8-burger-60', icon_size=(30, 30))
 
         folium.Marker(location=[ coord[0], coord[1]], tooltip=html, popup=popup,
                       icon=icon).add_to(mapStations)
