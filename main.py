@@ -4,7 +4,7 @@ import folium
 import json
 import folium
 import pandas as pd
-
+import base64
 from folium import IFrame
 
 import streamlit as st
